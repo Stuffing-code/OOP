@@ -9,20 +9,26 @@ class Point:
             return True
         return False
 
-    def __setCoordX(self, x):
+    @property
+    def coordX(self):
+        return self.__x
+
+    @coordX.setter
+    def coordX(self, x):
         if Point.__checkVaue(x):
             self.__x = x
         else:
             raise ValueError("Неверный формат данных")
 
-    def __getCoordX(self):
-        return self.__x
 
-    def __delCoordX(self):
+    @coordX.deleter
+    def coordX(self):
         print("Удаление свойства")
         del self.__x
 
-    coordX = property(__getCoordX, __setCoordX, __delCoordX)
+    # coordX = property(__getCoordX, __setCoordX, __delCoordX)
+
+
 pt = Point(1, 2)
 pt.coordX = 100
 x = pt.coordX
