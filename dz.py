@@ -1,19 +1,37 @@
-class Point3D:
-    """Объявите класс Point3D для точек с тремя координатами x, y, z. Создайте несколько экземпляров этого класса и через них выведите в консоль значения x,y,z. Далее, сделайте следующие манипуляции:
+class DayValue:  # descriptor
+    def __set_name__(self, owner, name):
+        self.__name = name
 
-поменяйте любое значение координаты в классе Point3D и посмотрите как это повлияет на отображаемые величины экземпляров класса;
-удалите координату z в классе Point3D и убедитесь, что она будет отсутствовать во всех экземплярах;
-поменяйте координату в каком-либо экземпляре класса и посмотрите на результат."""
+    def __get__(self, instance, owner):
+        return instance.__dict__[self.__name]
 
-    x, y, z = 1, 2, 3
+    def __set__(self, instance, value):
+        if isinstance(value, int):
+            instance.__dict__[self.__name] = value
+        else:
+            raise ValueError("not int value")
 
 
-pt1 = Point3D()
-pt2 = Point3D()
-pt3 = Point3D()
-setattr(Point3D, "x", 5)
-delattr(Point3D, "z")
-setattr(pt1, "x", 8)
-print(pt1.x, pt1.y)
-print(pt2.x, pt2.y)
-print(pt3.x, pt3.y)
+class Calendar:
+    days = DayValue()
+    months = DayValue()
+    years = DayValue()
+
+    def __init__(self, day, month, year):
+        if day <= 31 and day >= 0:
+            self.days = day
+        else:
+            raise ValueError("Day is not true")
+
+        if month <= 12 and month >= 0:
+            self.months = month
+        else:
+            raise ValueError("Month is not true")
+
+        self.years = year
+
+
+pt = Calendar(31, 12, 2020)
+print(pt.days, pt.months, pt.years)
+pt2 = Calendar(1, 130, 2020)
+print(pt2.days, pt2.months, pt2.years)

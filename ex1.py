@@ -6,9 +6,6 @@ class NoDateDescr:
         return "NoDateDescr __get__"
 
 class CoordValue:  #descriptor
-    # def __init__(self, name):
-    #     self.__name = name
-
     def __set_name__(self, owner, name):
         print(name)
         self.__name = name
