@@ -17,21 +17,23 @@ class Calendar:
     months = DayValue()
     years = DayValue()
 
+    __slots__ = ("day", "month", "year")
+
     def __init__(self, day, month, year):
         if day <= 31 and day >= 0:
-            self.days = day
+            self.day = day
         else:
             raise ValueError("Day is not true")
 
         if month <= 12 and month >= 0:
-            self.months = month
+            self.month = month
         else:
             raise ValueError("Month is not true")
 
-        self.years = year
+        self.year = year
 
 
 pt = Calendar(31, 12, 2020)
-print(pt.days, pt.months, pt.years)
+print(pt.day, pt.month, pt.year)
 pt2 = Calendar(1, 130, 2020)
-print(pt2.days, pt2.months, pt2.years)
+print(pt2.day, pt2.month, pt2.year)
