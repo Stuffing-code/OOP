@@ -1,38 +1,38 @@
+class NoDateDescr:
+    def __set_name__(self, owner, name):
+        self.n__name = name
+
+    def __get__(self, instance, owner):
+        return "NoDateDescr __get__"
+
+class CoordValue:  #descriptor
+    # def __init__(self, name):
+    #     self.__name = name
+
+    def __set_name__(self, owner, name):
+        print(name)
+        self.__name = name
+
+    def __get__(self, instance, owner):
+        return instance.__dict__[self.__name]
+
+    def __set__(self, instance, value):
+        instance.__dict__[self.__name] = value
+
+
+
 class Point:
+    nodate = NoDateDescr()
+    coordX = CoordValue()
+    coordY = CoordValue()
 
     def __init__(self, x=0, y=0):
-        self.__x = x
-        self.__y = y
-
-    def __checkVaue(x):
-        if isinstance(x, int) or isinstance(x, float):
-            return True
-        return False
-
-    @property
-    def coordX(self):
-        return self.__x
-
-    @coordX.setter
-    def coordX(self, x):
-        if Point.__checkVaue(x):
-            self.__x = x
-        else:
-            raise ValueError("Неверный формат данных")
-
-
-    @coordX.deleter
-    def coordX(self):
-        print("Удаление свойства")
-        del self.__x
-
-    # coordX = property(__getCoordX, __setCoordX, __delCoordX)
+        self.coordX = x
+        self.coordY = y
 
 
 pt = Point(1, 2)
-pt.coordX = 100
-x = pt.coordX
-print(x)
-del pt.coordX
-pt.coordX = 7
-pt.coordX
+print(pt.coordX, pt.coordY)
+pt = Point(100, 32)
+print(pt.coordX, pt.coordY)
+
