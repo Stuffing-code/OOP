@@ -4,6 +4,8 @@ Cat, Dog и т.п. Реализуйте у них общий метод say(), �
 звукб издаваемый этими животными. Создайте кортеж из нескольких этих
 экземпляров классов, переберите их в цикле и выведите в консоль.
 """
+from playsound import playsound
+"""Импорт библиотеки для запуска мп3 файла"""
 
 
 class Animal:
@@ -14,9 +16,9 @@ class Animal:
 
 
 class Fox(Animal):
-
     @staticmethod
     def say():
+        playsound("C:\\Users\\Stuffing\\PycharmProjects\\pythonProject\\OOP\\fox_say.mp3")
         print("Fox say: 'Ring-ding-ding-ding-dingeringeding! "
               "Gering-ding-ding-ding-dingeringeding!'")
 
