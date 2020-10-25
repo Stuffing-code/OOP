@@ -1,39 +1,42 @@
-class DayValue:  # descriptor
-    def __set_name__(self, owner, name):
-        self.__name = name
+""""Создайте суперкласс «Персональные компьютеры» и на его основе подклассы: «Настольные ПК» и «Ноутбуки». В базовом
+классе определите общие свойства: размер памяти, диска, модель, CPU. А в производных классах уникальные свойства:
 
-    def __get__(self, instance, owner):
-        return instance.__dict__[self.__name]
-
-    def __set__(self, instance, value):
-        if isinstance(value, int):
-            instance.__dict__[self.__name] = value
-        else:
-            raise ValueError("not int value")
+для настольных: монитор, клавиатура, мышь, их габариты; и метод для вывода этой информации в консоль;
+для ноутбуков: габариты, диагональ экрана; и метод для вывода этой информации в консоль."""
 
 
-class Calendar:
-    days = DayValue()
-    months = DayValue()
-    years = DayValue()
-
-    __slots__ = ("day", "month", "year")
-
-    def __init__(self, day, month, year):
-        if day <= 31 and day >= 0:
-            self.day = day
-        else:
-            raise ValueError("Day is not true")
-
-        if month <= 12 and month >= 0:
-            self.month = month
-        else:
-            raise ValueError("Month is not true")
-
-        self.year = year
+class PersonalComputer:
+    def __init__(self, memory: int, ssd: int, model: str, cpu: str):
+        self._memory = memory
+        self._ssd = ssd
+        self._model = model
+        self._cpu = cpu
 
 
-pt = Calendar(31, 12, 2020)
-print(pt.day, pt.month, pt.year)
-pt2 = Calendar(1, 130, 2020)
-print(pt2.day, pt2.month, pt2.year)
+class StationaryPc(PersonalComputer):
+    def __init__(self, monitor: str, keyboard: str, mouse: str, *args):
+        super().__init__(*args)
+        self._monitor = monitor
+        self._keyboard = keyboard
+        self._mouse = mouse
+
+    def demonstrationPC(self):
+        print(f"Пк модели {self._model}, monitor {self._monitor}, mouse {self._mouse}, keyboard {self._keyboard},\
+ssd обьем {self._ssd} Gb,на основе процессора {self._cpu},{self._memory}гб ОЗУ")
+
+
+class Notebook(PersonalComputer):
+    def __init__(self, display: int, weight: int,  *args):
+        super().__init__(*args)
+        self._display = display
+        self._weight = weight
+
+    def demonstrationNb(self):
+        print(f"У ноутбука модели {self._model},диагональ экрана {self._display},вес {self._weight}\
+,ssd обьем {self._ssd} Gb,на основе процессора {self._cpu},{self._memory}гб ОЗУ")
+
+
+Ntb = Notebook(17, 56, 8, 256, "hp", "razen")
+Ntb.demonstrationNb()
+Pc = StationaryPc("dell", "razer", "red dragon", 64, 1000, "StuffingCo", "Intel core 7")
+Pc.demonstrationPC()
