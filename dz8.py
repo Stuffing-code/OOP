@@ -24,43 +24,43 @@ class Fox(Animal):
 class Bird(Animal):
     @staticmethod
     def say():
-        print("Bird goes tweet")
+        print("Bird say: 'tweet'")
 
 
 class Cat(Animal):
     @staticmethod
     def say():
-        print("Cat goes meow")
+        print("Cat say: 'meow'")
 
 
 class Dog(Animal):
     @staticmethod
     def say():
-        print("Dog goes woof")
+        print("Dog say: 'woof'")
 
 
 class Fish(Animal):
     @staticmethod
     def say():
-        print("Fish go blub")
+        print("Fish say: 'blub'")
 
 
 class Mouse(Animal):
     @staticmethod
     def say():
-        print("Mouse goes squeek")
+        print("Mouse say: 'squeek'")
 
 
 class Cow(Animal):
     @staticmethod
     def say():
-        print("Cow goes moo")
+        print("Cow say: 'moo'")
 
 
 class Frog(Animal):
     @staticmethod
     def say():
-        print("Frog goes croak")
+        print("Frog say: 'croak'")
 
 
 animals = (Frog, Cow, Mouse, Fish, Dog, Cat, Bird, Fox)
