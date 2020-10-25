@@ -20,7 +20,8 @@ class Fox(Animal):
     def say():
         print("Fox say: 'Ring-ding-ding-ding-dingeringeding! "
               "Gering-ding-ding-ding-dingeringeding!'")
-        playsound("C:\\Users\\Stuffing\\PycharmProjects\\pythonProject\\OOP\\fox_say.mp3")
+        playsound("C:\\Users\\Stuffing\\PycharmProjects"
+                  "\\pythonProject\\OOP\\fox_say.mp3") #путь к файлу с нужным мп3 файлом
 
 
 
