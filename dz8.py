@@ -18,9 +18,10 @@ class Animal:
 class Fox(Animal):
     @staticmethod
     def say():
-        playsound("C:\\Users\\Stuffing\\PycharmProjects\\pythonProject\\OOP\\fox_say.mp3")
         print("Fox say: 'Ring-ding-ding-ding-dingeringeding! "
               "Gering-ding-ding-ding-dingeringeding!'")
+        playsound("C:\\Users\\Stuffing\\PycharmProjects\\pythonProject\\OOP\\fox_say.mp3")
+
 
 
 class Bird(Animal):
