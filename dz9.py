@@ -85,7 +85,3 @@ mb = Motherboard(CPU(1, AMD('Ryzen')),
                  Memory("Kingston", 5)
                  )
 mb.showinfo()
-# mb = Motherboard(CPU(8, AMD('Ryzen 7 2700x')),
-#                  GPU(3584, GeForce('1080 Ti')),
-#                  Memory('Kingston', 8))
-# mb.showinfo()
