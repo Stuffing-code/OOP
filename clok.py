@@ -36,7 +36,7 @@ class Clock:
     def __eq__(self, other):
         return self.__secs == other.getSeconds()
 
-    def __nq__(self, other):
+    def __ne__(self, other):
         return not self.__eq__(other)
 
     def __getitem__(self, item):
@@ -70,6 +70,8 @@ class Clock:
             self.__secs = s + 60 * value + h * 3600
         elif key == "sec":
             self.__secs = value + 60 * m + h * 3600
+
+        return "Неверный ключ"
 
 
 c1 = Clock(80000)
