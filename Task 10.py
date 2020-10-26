@@ -1,7 +1,7 @@
 """
 напишите класс Point3D для хранения координат в трехмерном пространстве (x, y, z)
 Реализуйте перегрузку операторов сложения, вычитания, умножения и деления для этого
-класса. Так же сделайте возможность сравнения кооржинат между собой и запись\считывание
+класса. Так же сделайте возможность сравнения координат между собой и запись\считывание
 значений через ключи: 'x', 'y', 'z'.
 """
 
@@ -19,7 +19,7 @@ class Point3D:
                 and (isinstance(y, int) or isinstance(y, float))
                 and (isinstance(z, int) or isinstance(y, float))
         ):
-            raise ValueError("Координаты должны числами")
+            raise ValueError("Координаты должны быть числами")
         self.__coord = (x, y, z)
 
     def get_Coord(self):
@@ -150,14 +150,12 @@ class Point3D:
         return "Неверный ключ"
 
 
-x1 = Point3D(1, 1, 3)
+x1 = Point3D(1, 4, 3)
 x2 = Point3D(1, 2, 3)
 x3 = x1 - x2
 print(x3.get_Coord())
 if x1 > x2:
-    print("dsadsa")
-else:
-    print("NO")
+    print("x1>x2")
 print(x1["z"])
 x1["z"] = 2
 print(x1['z'])
