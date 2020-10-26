@@ -32,21 +32,21 @@ class Point3D:
         return Point3D(*total)
 
     def __sub__(self, other):
-        Point3D.checkPoint3D()
+        Point3D.checkPoint3D(other)
         total = []
         for i in range(len(self.__coord)):
             total.append(self.__coord[i] - other.get_Coord()[i])
         return Point3D(*total)
 
     def __mul__(self, other):
-        Point3D.checkPoint3D()
+        Point3D.checkPoint3D(other)
         total = []
         for i in range(len(self.__coord)):
             total.append(self.__coord[i] * other.get_Coord()[i])
         return Point3D(*total)
 
     def __truediv__(self, other):
-        Point3D.checkPoint3D()
+        Point3D.checkPoint3D(other)
         total = []
         for i in range(len(self.__coord)):
             total.append(self.__coord[i] / other.get_Coord()[i])
