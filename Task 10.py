@@ -14,20 +14,49 @@ class Point3D:
                 and (isinstance(z, int) or isinstance(y, float))
         ):
             raise ValueError("Координаты должны числами")
+        self.__coord = (x, y, z)
 
-        self.__x = x
-        self.__y = y
-        self.__z = z
+    def get_Coord(self):
+        return self.__coord
 
-    #TODO: 1. +, 2. -, 3. *, 4. /.
+    @staticmethod
+    def checkPoint3D(x):
+        if not isinstance(x, Point3D):
+            raise ArithmeticError("Правый операнд должен быть типа Point3D")
+
     def __add__(self, other):
+        Point3D.checkPoint3D(other)
+        total = []
+        for i in range(len(self.__coord)):
+            total.append(self.__coord[i] + other.get_Coord()[i])
+        return Point3D(*total)
+
+    def __sub__(self, other):
+        Point3D.checkPoint3D()
+        total = []
+        for i in range(len(self.__coord)):
+            total.append(self.__coord[i] - other.get_Coord()[i])
+        return Point3D(*total)
+
+    def __mul__(self, other):
+        Point3D.checkPoint3D()
+        total = []
+        for i in range(len(self.__coord)):
+            total.append(self.__coord[i] * other.get_Coord()[i])
+        return Point3D(*total)
+
+    def __truediv__(self, other):
+        Point3D.checkPoint3D()
+        total = []
+        for i in range(len(self.__coord)):
+            total.append(self.__coord[i] / other.get_Coord()[i])
+        return Point3D(*total)
+    # TODO: сравнение через ключи
+
+    # TODO: запись считывание через ключи
 
 
-    #TODO: сравнение через ключи
-
-
-    #TODO: запись считывание через ключи
-
-
-
-x1 = Point3D(1.1, 2, 3)
+x1 = Point3D(1, 2, 3)
+x2 = Point3D(1, 2, 3)
+x3 = x1 + x2
+print(x3.get_Coord())
