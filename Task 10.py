@@ -12,7 +12,7 @@ class Point3D:
         конструктор создания координат в 3х мерном пространстве
         :param x: координата
         :param y: координата
-        :param z: кооордината
+        :param z: координата
         """
         if not (
                 (isinstance(x, int) or isinstance(x, float))
